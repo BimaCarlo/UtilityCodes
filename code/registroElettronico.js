@@ -5,7 +5,7 @@ voto:item.children[3].children[0].innerHTML.replaceAll(',','.').replaceAll(' ', 
 }});
 let sommaVoti = 0;
 voti.forEach((item) => {sommaVoti += parseFloat(item.voto)});
-console.log("Hai preso " +voti.length + " voti e la tua media è " + sommaVoti/voti.length);
+console.log("Hai preso " +voti.length + " voti e la tua media è " + (sommaVoti/voti.length).toFixed(3).toString());
 let materie = []; 
 let votiSommati = []; 
 let numeroVoti=[];
@@ -33,10 +33,10 @@ return {
 let mediaSommaMaterie = 0;
 materie.forEach((item, index)=>{ mediaSommaMaterie += parseFloat(votiSommati[index]/numeroVoti[index])});
 mediaSommaMaterie = mediaSommaMaterie / materie.length;
-console.log("La media tra le medie è : " + mediaSommaMaterie.toString());
+console.log("La media tra le medie è : " + mediaSommaMaterie.toFixed(3).toString());
 votiTabellaObj.push({
     materia:"Totale",
-    voto: sommaVoti,
+    voto: parseFloat(mediaSommaMaterie.toFixed(3)),
     numeroVoti:numeroVoti.reduce((a,b)=>a+b, 0)
 })
 console.table(votiTabellaObj);
